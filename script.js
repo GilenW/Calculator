@@ -1,11 +1,11 @@
 const digit_buttons = document.querySelectorAll('.digit');
 const operators_buttons = document.querySelectorAll('.operators');
 const display_screen = document.querySelector('.display');
+const clean = document.querySelector('.clear');
 //variables
 let display_value = [];
 let operator = '';
 let just_finished_operation = false;
-let count=0;
 
 
 function add(a,b) {
@@ -16,27 +16,15 @@ function subtract(a,b) {
 	return a-b;
   };
   
-function sum(arr) {
-	let sum = 0;
-	if(arr.length === 0){
-	  return sum;
-	}
-	for(let i of arr){
-	  sum = sum + parseInt(i);
-	}
-	return sum;
-  };
-  
-function multiply(arr) {
-  
-	let mul = 1;
-	for(let i of arr){
-	  mul = mul * parseInt(i);
-	}
-	return mul;
+function multiply(a,b) {
+
+	return a*b;
   };
 
 function divide(a,b){
+	if(b == 0){
+		return 'ERROR';
+	}
 	return a/b;
 }
 
@@ -84,18 +72,22 @@ digit_buttons.forEach(btn => {
 
 operators_buttons.forEach(btn =>{
 	btn.addEventListener('click', function() {
-		// count++;
-		// console.log(`this is ${count}`);
-		display_value.push(display_screen.textContent);
-		// if(count>=2){
-		// 	console.log(`this is inside ${count}`);
-		// 	console.log(display_value);
-		// 	console.log(operator)
-		// 	operate(operator, display_value[0], display_value[1]);
-		// 	display_value = [];
-		// }
-		// console.log(this.getAttribute('class').split(' ')[1]);
 
+
+		display_value.push(display_screen.textContent);
+		console.log('first operand and second: ' + display_value);
+
+		if(display_value.length ==2){
+			console.log('complete operands: ' + display_value);
+			operate(operator, display_value[0], display_value[1]);
+			display_value = [];
+			display_value.push(display_screen.textContent);
+			console.log('after checked length: ' + display_value)
+			stored_value = '';
+			operator = this.getAttribute('class').split(' ')[1];
+			return;
+
+		}
 		if(!this.getAttribute('class').includes('equal')){
 			operator = this.getAttribute('class').split(' ')[1];
 			display_screen.textContent = '';
@@ -106,7 +98,10 @@ operators_buttons.forEach(btn =>{
 			display_value = [];
 		}
 		
-
-
 	})
+})
+
+clean.addEventListener('click', ()=>{
+	display_screen.textContent = '';
+	display_value = [];
 })
