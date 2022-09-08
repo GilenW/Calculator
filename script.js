@@ -45,10 +45,10 @@ function divide(a,b){
 function operate(operator,num1,num2){
 	switch(operator){
 		case 'add':
+			console.log(add(+num1, +num2));
 			display_screen.textContent = add(+num1, +num2);
 			break;
 		case 'subtract':
-			console.log('subtract')
 			display_screen.textContent = subtract(+num1, +num2);
 			break;
 		case 'multiply':
@@ -71,7 +71,6 @@ function display(){
 		just_finished_operation = !just_finished_operation;
 	}
 	display_screen.textContent += this.textContent;
-	console.log(this.textContent);
 }
 
 // Make the calculator work! You’ll need to store the first number that is input into the calculator when a user presses an operator, and also save which operation has been chosen and then operate() on them when the user presses the “=” key.
@@ -85,16 +84,16 @@ digit_buttons.forEach(btn => {
 
 operators_buttons.forEach(btn =>{
 	btn.addEventListener('click', function() {
-		count++;
-		console.log(`this is ${count}`);
+		// count++;
+		// console.log(`this is ${count}`);
 		display_value.push(display_screen.textContent);
-		if(count>=2){
-			console.log(`this is inside ${count}`);
-			console.log(display_value);
-			console.log(operator)
-			operate(operator, display_value[0], display_value[1]);
-			display_value = [];
-		}
+		// if(count>=2){
+		// 	console.log(`this is inside ${count}`);
+		// 	console.log(display_value);
+		// 	console.log(operator)
+		// 	operate(operator, display_value[0], display_value[1]);
+		// 	display_value = [];
+		// }
 		// console.log(this.getAttribute('class').split(' ')[1]);
 
 		if(!this.getAttribute('class').includes('equal')){
