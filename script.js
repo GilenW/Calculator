@@ -5,6 +5,7 @@ const display_screen = document.querySelector('.display');
 let display_value = [];
 let operator = '';
 let just_finished_operation = false;
+let count=0;
 
 
 function add(a,b) {
@@ -84,7 +85,16 @@ digit_buttons.forEach(btn => {
 
 operators_buttons.forEach(btn =>{
 	btn.addEventListener('click', function() {
+		count++;
+		console.log(`this is ${count}`);
 		display_value.push(display_screen.textContent);
+		if(count>=2){
+			console.log(`this is inside ${count}`);
+			console.log(display_value);
+			console.log(operator)
+			operate(operator, display_value[0], display_value[1]);
+			display_value = [];
+		}
 		// console.log(this.getAttribute('class').split(' ')[1]);
 
 		if(!this.getAttribute('class').includes('equal')){
@@ -92,7 +102,7 @@ operators_buttons.forEach(btn =>{
 			display_screen.textContent = '';
 		}
 		else{
-			console.log(operator);
+			console.log(display_value)
 			operate(operator, display_value[0], display_value[1]);
 			display_value = [];
 		}
