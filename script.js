@@ -2,6 +2,8 @@ const digit_buttons = document.querySelectorAll('.digit');
 const operators_buttons = document.querySelectorAll('.operators');
 const display_screen = document.querySelector('.display');
 const clean = document.querySelector('.clear');
+const delete_btn = document.querySelector('.delete');
+
 //variables
 let display_value = [];
 let operator = '';
@@ -104,4 +106,8 @@ operators_buttons.forEach(btn =>{
 clean.addEventListener('click', ()=>{
 	display_screen.textContent = '';
 	display_value = [];
+})
+delete_btn.addEventListener('click', ()=>{
+	display_screen.textContent = display_screen.textContent.slice(0,-1);
+
 })
