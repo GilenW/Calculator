@@ -12,8 +12,11 @@ body{
     width: 300px;
     border: solid 5px rgb(137, 156, 114);
     border-radius: 5px;
-    box-shadow: -13px 11px 18px 2px #0000005c;
+    box-shadow: -4px 3px 0px 0px #b8b8b8, -13px 11px 18px 2px #0000005c;
+
 }
+
+
 
 .display{
     background-color: rgb(235, 235, 235);
@@ -22,6 +25,7 @@ body{
     font-size: 50px;
     border-radius: 5px;
     margin: 10px;
+    text-align: center;
 }
 
 .container4{
